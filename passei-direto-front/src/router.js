@@ -9,8 +9,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: () => import('@/components/HelloWorld'),
+      name: 'DiskList',
+      component: () => import('@/views/Disk/List'),
     },
   ],
 });
