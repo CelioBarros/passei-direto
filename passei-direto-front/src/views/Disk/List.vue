@@ -1,6 +1,7 @@
 <template>
   <div class="list">
     <h1>Lista de Discos</h1>
+    <b-button v-b-modal.add-modal>Launch centered modal</b-button>
     <div class="d-flex flex-wrap justify-content-between">
       <Card
         class="mb-3"
@@ -11,6 +12,7 @@
         :date="card.date"
       />
     </div>
+    <Add />
   </div>
 </template>
 
@@ -24,10 +26,12 @@ const cards = [
   { name: "Disco 6", band: "Banda 2", date: "12/12/2012" }
 ];
 import Card from "@/components/Card";
+import Add from "./Add";
 
 export default {
   name: "DiskList",
   components: {
+    Add,
     Card
   },
   data() {

@@ -16,15 +16,14 @@ export default {
     },
     size: {
       type: String,
-      default: 'lg',
+      default: "lg"
     },
     title: {
       type: String,
-      default: '',
-    },
+      default: ""
+    }
   }
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
