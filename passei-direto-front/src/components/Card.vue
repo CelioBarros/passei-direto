@@ -10,12 +10,20 @@
       <b-card-text>
         {{ card.date }}
       </b-card-text>
-      <b-button @click="$bvModal.show(`edit-modal-${card.id}`)">
-        Editar
-      </b-button>
-      <b-button @click="$bvModal.show(`remove-modal-${card.id}`)">
-        Remover
-      </b-button>
+      <div class="d-flex justify-content-between">
+        <b-button
+          variant="danger"
+          @click="$bvModal.show(`remove-modal-${card.id}`)"
+        >
+          Remover
+        </b-button>
+        <b-button
+          variant="warning"
+          @click="$bvModal.show(`edit-modal-${card.id}`)"
+        >
+          Editar
+        </b-button>
+      </div>
     </b-card>
 
     <Edit :card="card" />
@@ -43,6 +51,6 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  width: 12rem;
+  width: 13.5rem;
 }
 </style>

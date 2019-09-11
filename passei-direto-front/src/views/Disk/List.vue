@@ -1,7 +1,9 @@
 <template>
   <div class="list">
+    <b-button class="float-right add-button" v-b-modal.add-modal
+      >Adicionar Disco</b-button
+    >
     <h1>Lista de Discos</h1>
-    <b-button v-b-modal.add-modal>Adicionar Disco</b-button>
     <div class="d-flex flex-wrap justify-content-between">
       <Card
         class="mb-3"
@@ -40,4 +42,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.add-button {
+  background-color: #2c3e50;
+}
+</style>
