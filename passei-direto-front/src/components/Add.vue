@@ -71,7 +71,7 @@
 import { required } from "vuelidate/lib/validators";
 
 export default {
-  name: "DiskList",
+  name: "AddDisk",
   computed: {
     modalId() {
       return "add-modal";
