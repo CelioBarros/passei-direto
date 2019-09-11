@@ -55,6 +55,14 @@
           </b-form-input>
         </b-form-group>
       </b-form-group>
+      <template v-slot:modal-footer="{ ok, cancel }">
+        <b-button size="md" variant="danger" @click="cancel()">
+          Cancelar
+        </b-button>
+        <b-button size="md" variant="success" @click="ok()">
+          Salvar
+        </b-button>
+      </template>
     </b-modal>
   </div>
 </template>
