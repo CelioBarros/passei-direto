@@ -8,7 +8,7 @@
         {{ card.band }}
       </b-card-sub-title>
       <b-card-text>
-        {{ card.date }}
+        {{ card.date | moment("DD/MM/YYYY") }}
       </b-card-text>
       <div class="d-flex justify-content-between">
         <b-button
