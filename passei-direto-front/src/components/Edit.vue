@@ -69,6 +69,7 @@
 
 <script>
 import { required } from "vuelidate/lib/validators";
+import { mapActions } from "vuex";
 
 export default {
   name: "EditDisk",
@@ -105,8 +106,24 @@ export default {
     }
   },
   methods: {
-    save() {
-      console.log(this.form);
+    ...mapActions(["updateDisk", "getDisks"]),
+    save(bvModalEvt) {
+      bvModalEvt.preventDefault();
+      if (this.$v.form.$invalid) {
+        return;
+      }
+      const disk = {
+        id: this.card.id,
+        name: this.form.name,
+        band: this.form.band,
+        date: this.form.date
+      };
+      this.updateDisk(disk).then(() => {
+        this.getDisks().then(() => {});
+      });
+      this.$nextTick(() => {
+        this.$bvModal.hide(this.modalId);
+      });
     },
     resetModal() {
       this.form.name = this.card.name;
