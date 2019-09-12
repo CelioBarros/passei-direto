@@ -9,7 +9,7 @@
       @hidden="resetModal"
       @ok="save"
     >
-      <b-form-group @submit="save">
+      <b-form-group>
         <b-form-group
           id="input-group-1"
           label="Nome do disco:"
@@ -56,7 +56,7 @@
         </b-form-group>
       </b-form-group>
       <template v-slot:modal-footer="{ ok, cancel }">
-        <b-button size="md" variant="danger" @click="cancel()">
+        <b-button type="button" size="md" variant="danger" @click="cancel()">
           Cancelar
         </b-button>
         <b-button size="md" variant="success" @click="ok()">
@@ -69,6 +69,7 @@
 
 <script>
 import { required } from "vuelidate/lib/validators";
+import { mapActions } from "vuex";
 
 export default {
   name: "AddDisk",
@@ -100,7 +101,24 @@ export default {
     }
   },
   methods: {
-    save() {},
+    ...mapActions(["createDisk", "getDisks"]),
+    save(bvModalEvt) {
+      bvModalEvt.preventDefault();
+      if (this.$v.form.$invalid) {
+        return;
+      }
+      const disk = {
+        name: this.form.name,
+        band: this.form.band,
+        date: this.form.date
+      };
+      this.createDisk(disk).then(() => {
+        this.getDisks().then(() => {});
+      });
+      this.$nextTick(() => {
+        this.$bvModal.hide(this.modalId);
+      });
+    },
     resetModal() {
       this.form.name = null;
       this.form.band = null;
