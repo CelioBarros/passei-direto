@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 const router = express.Router();
 router.get('/', (req, res) => res.json({ message: 'Funcionando!' }));
 router.get('/disk', (req, res) =>{
-  sql.execSQLQuery('SELECT * FROM tb_disk', res);
+  sql.execSQLQuery('SELECT id, name, band, DATE_FORMAT(date, "%Y-%m-%d") as date FROM tb_disk', res);
 })
 router.delete('/disk/:id', (req, res) =>{
   const id = parseInt(req.params.id);
