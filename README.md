@@ -5,13 +5,16 @@
   source {path-to-project}passei-direto/passei-direto-back/sql/database.sql
 ```
 
-### Execute backend
+### Install and execute backend
 ```
-node passei-direto-back/index.js
+cd passei-direto-back
+npm i
+node index.js
 ```
 
-### Execute frontend
+### Install and execute frontend
 ```
 cd passei-direto-front
+npm i
 npm run serve
 ```
