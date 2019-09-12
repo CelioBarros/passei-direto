@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="div-card">
     <b-card>
       <b-card-title>
         {{ card.name }}
@@ -18,7 +18,7 @@
           Remover
         </b-button>
         <b-button
-          variant="warning"
+          variant="light"
           @click="$bvModal.show(`edit-modal-${card.id}`)"
         >
           Editar
@@ -50,7 +50,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card {
+.div-card {
   width: 13.5rem;
+  .card {
+    background-color: orange; /* For browsers that do not support gradients */
+    background-image: linear-gradient(orange, red);
+  }
 }
 </style>
