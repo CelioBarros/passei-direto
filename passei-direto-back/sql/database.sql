@@ -1,0 +1,12 @@
+CREATE USER 'passei'@'localhost' IDENTIFIED WITH mysql_native_password BY 'direto';
+
+CREATE SCHEMA IF NOT EXISTS `PASSEIDIRETO` DEFAULT CHARACTER SET utf8 ;
+
+CREATE TABLE IF NOT EXISTS `PASSEIDIRETO`.`tb_disk` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) NOT NULL,
+  `date` DATE NULL,
+  `band` VARCHAR(50) NULL,
+  PRIMARY KEY (`id`));
+
+GRANT ALL PRIVILEGES ON `PASSEIDIRETO`.`tb_disk` TO `passei`@`localhost`;
