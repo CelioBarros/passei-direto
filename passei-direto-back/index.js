@@ -29,6 +29,19 @@ router.patch('/disk/:id', (req, res) =>{
   sql.execSQLQuery(`UPDATE tb_disk SET name=?, band=?, date=? WHERE ID=?`, res, [name, band, date, id]);
 })
 
+// Add headers
+app.use(function (req, res, next) {
+
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  // Pass to next layer of middleware
+  next();
+});
+
 app.use('/', router);
 
 
