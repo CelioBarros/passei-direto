@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "RemoveDisk",
   computed: {
@@ -36,7 +37,10 @@ export default {
     }
   },
   methods: {
-    remove() {}
+    ...mapActions(["deleteDisk"]),
+    remove() {
+      this.deleteDisk(this.card.id).then(() => {});
+    }
   }
 };
 </script>

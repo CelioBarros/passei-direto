@@ -13,7 +13,10 @@ export default {
       return data;
     });
   },
-  deleteDisk(context, diskId) {
-    return api.deleteDisk(diskId);
+  deleteDisk({ commit }, diskId) {
+    return api.deleteDisk(diskId).then(({ data }) => {
+      commit("removeDisk", diskId);
+      return data;
+    });
   }
 };
