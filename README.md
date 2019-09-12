@@ -1,5 +1,10 @@
-# passei-direto
-
+# Passei Direto
+### Needed installed
+```
+node
+npm
+mysql
+```
 ### Enter in MYSQL and execute
 ```
   source {path-to-project}passei-direto/passei-direto-back/sql/database.sql
