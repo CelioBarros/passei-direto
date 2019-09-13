@@ -9,7 +9,17 @@ app.use(bodyParser.json());
 const router = express.Router();
 router.get('/', (req, res) => res.json({ message: 'Funcionando!' }));
 router.get('/disk', (req, res) =>{
-  sql.execSQLQuery('SELECT id, name, band, DATE_FORMAT(date, "%Y-%m-%d") as date FROM tb_disk', res);
+  var filter = '';
+  if (Object.keys(req.query).length) {
+    if (req.query.name) filter += `name LIKE "%${req.query.name}%"`;
+    if (req.query.band) {
+      if (filter.length) filter += ' AND ';
+      filter += `band LIKE "%${req.query.band}%"`;
+    }
+    filter = 'WHERE ' + filter;
+  }
+  var query = `SELECT id, name, band, DATE_FORMAT(date, "%Y-%m-%d") as date FROM tb_disk ${filter}`;
+  sql.execSQLQuery(query, res);
 })
 router.delete('/disk/:id', (req, res) =>{
   const id = parseInt(req.params.id);
