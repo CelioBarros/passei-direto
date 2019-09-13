@@ -7,8 +7,8 @@ export default {
   updateDisk(context, disk) {
     return api.updateDisk(disk);
   },
-  getDisks({ commit }) {
-    return api.getDisks().then(({ data }) => {
+  getDisks({ commit }, filter = {}) {
+    return api.getDisks(filter).then(({ data }) => {
       commit("setDisks", data);
       return data;
     });

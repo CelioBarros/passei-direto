@@ -11,8 +11,11 @@ export default {
   async deleteDisk(id) {
     return axiosPassei.delete(`disk/${id}`);
   },
-  async getDisks() {
-    return axiosPassei.get("disk");
+  async getDisks(filter) {
+    const filtering = Object.keys(filter)
+      .map(key => `${key}=${filter[key]}`)
+      .join(",");
+    return axiosPassei.get(`disk?${filtering}`);
   },
   async updateDisk(disk) {
     return axiosPassei.patch(`disk/${disk.id}`, disk);
